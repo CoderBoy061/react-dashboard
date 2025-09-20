@@ -1,0 +1,128 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  padding: 0 24px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--panel-border);
+  position: sticky;
+  top: 0;
+  z-index: 98;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-breadcrumb {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-left: 12px;
+}
+
+.breadcrumb-sep {
+  margin: 0 8px;
+  color: var(--muted-2);
+}
+
+.header-default {
+  font-weight: 500;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 24px;
+  position: relative;
+}
+
+.header-search {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--panel-border);
+  background: var(--toolbar-bg);
+  font-size: 1rem;
+}
+
+.search-shortcut {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-2);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: var(--text);
+}
+
+.icon-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  border-radius: 6px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 12px;
+    gap: 12px;
+  }
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  /* Stack: search on first row (full width), icons row below */
+  .header-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .header-center {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    display: none;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    background: var(--toolbar-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 0px 8px;
+    margin-top: 26px;
+  }
+  .header-breadcrumb {
+    display: none;
+  }
+  .search-shortcut {
+    display: none;
+  }
+}

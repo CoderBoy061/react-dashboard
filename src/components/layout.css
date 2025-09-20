@@ -1,0 +1,79 @@
+.app-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background: var(--panel);
+  border-right: 1px solid var(--panel-border);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile sidebar overlay behavior */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    transition: transform 240ms ease;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+.main {
+  margin-left: 220px; /* Same as sidebar width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+  transition: margin-right 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.main.with-drawer {
+  padding-right: 360px; /* reserve space for drawer */
+}
+
+.header {
+  height: 68px;
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+  z-index: 98;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background: var(--bg);
+  overflow-y: auto;
+  /* hide scrollbar but keep scroll */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    height: 100vh;
+  }
+  .main {
+    margin-left: 0;
+  }
+}

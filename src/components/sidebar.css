@@ -1,0 +1,212 @@
+/* Add to e:\react-dashboard\src\index.css or Sidebar.css */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px; /* slightly wider to match image */
+  background: var(--panel);
+  border-right: 1px solid var(--panel-border);
+  padding: 16px 12px; /* tighter */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* tighter */
+  overflow-y: auto;
+}
+
+/* Mobile close button */
+.sb-close {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--muted-2);
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .sb-close {
+    display: inline-flex;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sidebar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.sidebar-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.sidebar-labels {
+  display: flex;
+  gap: 16px;
+  font-size: 0.95rem;
+  color: var(--muted-2);
+  margin-bottom: 10px; /* a bit more spacing */
+}
+
+.sidebar-favorites {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.sidebar-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--muted-2);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.sidebar-link {
+  color: var(--muted);
+  font-size: 0.98rem;
+  margin-bottom: 2px;
+}
+
+.sidebar-section-title {
+  font-size: 0.95rem;
+  color: var(--muted-2);
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-navlink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px; /* more touch area */
+  border-radius: 10px; /* capsule feel */
+  color: var(--text);
+  font-size: 0.96rem; /* slightly smaller */
+  margin-bottom: 2px;
+  text-decoration: none;
+  transition: background 0.2s;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+.sidebar-navlink .navtext {
+  flex: 1;
+}
+.sb-icn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  color: var(--muted);
+}
+.sb-icn.sm {
+  margin-right: 3px;
+}
+.sidebar-navlink .caret {
+  opacity: 0.8;
+  color: var(--muted);
+}
+
+.sidebar-navlink.active {
+  background: var(--toolbar-bg);
+  color: var(--text);
+  border-left-color: #8ab4ff;
+}
+.sidebar-navlink:hover {
+  background: var(--toolbar-bg);
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-group {
+  margin-bottom: 8px;
+}
+
+.sidebar-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: var(--text);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.sidebar-subnav {
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* a bit more gap */
+}
+
+.sidebar-subnav-link {
+  color: var(--muted);
+  font-size: 0.92rem; /* tighter */
+  padding: 4px 6px; /* small pill */
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sidebar-subnav-link:hover {
+  background: var(--toolbar-bg);
+  color: var(--text);
+}
+
+.sidebar-section-title {
+  font-size: 1rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* collapse behavior */
+.sidebar-collapse {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  will-change: max-height, opacity;
+}
+
+.sidebar-collapse.open {
+  max-height: 500px; /* Large enough for content */
+  opacity: 1;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s;
+}
+
+/* keep hover minimal; active state provides highlight */
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--panel-border);
+    padding: 12px 8px;
+  }
+}

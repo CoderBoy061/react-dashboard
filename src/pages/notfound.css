@@ -1,0 +1,53 @@
+.nf-wrap {
+  display: grid;
+  place-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 24px;
+}
+
+.nf-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.nf-emoji {
+  font-size: 28px;
+  opacity: 0.8;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.nf-title {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  color: var(--text);
+}
+.nf-desc {
+  margin: 0 0 16px 0;
+  color: var(--muted-2);
+}
+.nf-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.nf-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+.nf-btn.primary {
+  background: var(--stat-accent-bg);
+  border-color: color-mix(in oklab, var(--panel-border) 30%, #93c5fd 70%);
+}
+.nf-btn:hover {
+  background: var(--toolbar-bg);
+}

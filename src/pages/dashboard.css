@@ -1,0 +1,248 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-top {
+  display: grid;
+  grid-template-columns: 2fr 2fr 4fr; /* two stat columns + narrower right column */
+  gap: 35px;
+  align-items: stretch;
+}
+/* place the Projections wrapper (non-stat-card div) in the right column */
+.grid-top > div:not(.stat-card) {
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+  min-width: 0;
+}
+.grid-top .stat-card {
+  min-height: 120px;
+}
+.grid-top .proj-card {
+  grid-column: 3 / 4;
+  grid-row: 1 / span 2;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 18px 20px;
+  transition: transform 180ms ease, box-shadow 180ms ease,
+    background-color 180ms ease;
+  cursor: pointer;
+}
+
+.stat-title {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.stat-change {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.stat-change::after {
+  content: "\2197";
+  font-size: 12px;
+  margin-left: 6px;
+}
+
+.stat-change.up {
+  color: #059669;
+}
+.stat-change.down {
+  color: #dc2626;
+}
+.stat-change.down::after {
+  content: "\2198";
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+.dark .stat-title,
+.dark .stat-value,
+.dark .stat-change {
+  color: var(--text);
+}
+.dark .stat-card:hover {
+  background: var(--stat-accent-bg);
+  border-color: color-mix(in oklab, var(--panel-border) 30%, #93c5fd 70%);
+}
+.dark .stat-card:hover .stat-title,
+.dark .stat-card:hover .stat-value,
+.dark .stat-card:hover .stat-change {
+  color: #111827 !important;
+}
+.grid-middle {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.panel-head {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.bar-mini .bar {
+  fill: #a5b4fc;
+}
+.line-mini path {
+  stroke: #60a5fa;
+  stroke-width: 2;
+  fill: none;
+}
+
+.map-placeholder {
+  height: 120px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f3f4f6,
+    #f3f4f6 10px,
+    #f9fafb 10px,
+    #f9fafb 20px
+  );
+  border-radius: 8px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-bottom {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 16px;
+}
+/* Prevent grid children from forcing columns to expand */
+.grid-middle > *,
+.grid-bottom > * {
+  min-width: 0;
+}
+
+/* When notification drawer is open, shrink the right column so layout remains responsive */
+.with-drawer .grid-middle,
+.with-drawer .grid-bottom {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+}
+.with-drawer .grid-top {
+  grid-template-columns: 1fr 1fr 2fr;
+}
+.with-drawer .grid-middle > :last-child,
+.with-drawer .grid-bottom > :last-child {
+  max-width: 320px;
+}
+/* Be explicit about right-card types when drawer is open */
+.with-drawer .location-card,
+.with-drawer .total-card {
+  max-width: 320px;
+}
+.grid-bottom .panel.table {
+  height: 290px;
+  overflow: auto;
+}
+.grid-bottom .panel.table table th,
+.grid-bottom .panel.table table td {
+  padding: 18px 10px;
+  font-size: 13px;
+}
+.grid-bottom .total-card {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  padding: 20px;
+  height: 290px;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+.mt {
+  margin-top: 12px;
+}
+
+@media (max-width: 1100px) {
+  .grid-top {
+    grid-template-columns: repeat(2, minmax(1, 1fr));
+  }
+  .grid-middle {
+    grid-template-columns: 1fr;
+  }
+  .grid-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .dashboard {
+    gap: 12px;
+  }
+  .grid-top {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .grid-top > div:not(.stat-card) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .grid-middle,
+  .grid-bottom {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .grid-bottom .panel.table {
+    height: auto;
+    max-height: 60vh;
+  }
+}
+
+/* Extra small */
+@media (max-width: 480px) {
+  .stat-value {
+    font-size: 1.4rem;
+  }
+  .panel {
+    padding: 12px;
+  }
+}
