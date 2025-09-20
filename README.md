@@ -17,6 +17,45 @@ npm run build
 npm run preview
 ```
 
+## Testing
+
+Install deps (first time):
+
+```bash
+npm install
+```
+
+Run the full Jest suite (jsdom):
+
+```bash
+npm test
+```
+
+Watch mode:
+
+```bash
+npm run test:watch
+```
+
+Coverage report:
+
+```bash
+npm test -- --coverage
+# open coverage/lcov-report/index.html
+```
+
+Run a single test file or pattern:
+
+```bash
+npm test -- src/components/__tests__/Header.test.jsx
+npm test -- sidebar
+```
+
+Notes:
+
+- Tests use jsdom with polyfills configured in `jest.setup.js` (e.g., `TextEncoder`, `matchMedia`).
+- Chart.js-based components are lightweight-tested; heavy canvas rendering is mocked where appropriate.
+
 ## Tech Stack
 
 - React 18 + Vite
@@ -143,8 +182,23 @@ Store is provided in `main.jsx` via `<Provider store={store}>`.
 
 ## Deployment
 
-Deploy to Vercel/Netlify. For SPA routing, ensure fallback to `index.html` (`/* /index.html 200` on Netlify). Include the deployed URL here.
+I used Netlify (GitHub integration):
 
-## License
+1. I pushed the code to GitHub (this repo).
+2. In Netlify, I clicked "Import an existing project".
+3. I clicked the GitHub logo and authorized Netlify to access my repositories.
+4. I chose this GitHub repository to deploy.
+5. I selected the `main` branch.
+6. Build settings (Netlify usually auto-detects Vite, but I set/confirmed):
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+7. I set a site name and clicked Deploy.
+8. Automatic deployments are enabled: when I push to `main`, Netlify builds and deploys automatically.
 
-MIT
+SPA routing note (optional): If you use client-side routing and need deep-link support, add a redirect so 404s fall back to `index.html`.
+
+Deployed Link - `https://sass-react-dashboard.netlify.app/`
+
+```txt
+/*  /index.html  200
+```
