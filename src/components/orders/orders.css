@@ -1,0 +1,268 @@
+.orders-card {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 12px 12px 8px 12px;
+  overflow: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.orders-card::-webkit-scrollbar {
+  display: none;
+}
+.orders-card > p {
+  margin: 2px 4px 16px 4px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.orders-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  background: var(--toolbar-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+}
+
+.ot-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ot-filter {
+  position: relative;
+}
+
+.ot-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+}
+.ot-btn:hover {
+  background: #eef2f7;
+  color: #111827;
+}
+
+.ot-search {
+  position: relative;
+}
+.ot-search input {
+  width: 300px;
+  height: 34px;
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  padding: 0 14px 0 34px;
+  outline: none;
+  background: var(--panel);
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.02);
+}
+.ot-search svg {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: var(--muted-2);
+}
+
+.filter-pop {
+  position: absolute;
+  margin-top: 8px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 180px;
+  width: max-content;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+.filter-pop h4 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.filter-pop .row {
+  display: grid;
+  gap: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background: var(--chip-bg);
+  cursor: pointer;
+  user-select: none;
+}
+.chip.active {
+  background: #eef6ff;
+  border-color: #cfe2ff;
+}
+
+.orders-table {
+  width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+}
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 12px 10px;
+}
+.orders-table thead th {
+  color: var(--muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--panel-border);
+}
+.orders-table tbody tr {
+  border-bottom: 1px solid var(--panel-border);
+}
+.orders-table tbody tr:hover {
+  background: color-mix(in oklab, var(--panel) 92%, #ffffff 8%);
+}
+
+.cell-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.dot.progress {
+  background: #6366f1;
+}
+.dot.pending {
+  background: #60a5fa;
+}
+.dot.approved {
+  background: #f59e0b;
+}
+.dot.complete {
+  background: #10b981;
+}
+.dot.rejected {
+  background: #9ca3af;
+}
+
+.more-btn {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted-2);
+}
+.more-btn:hover {
+  background: var(--panel-border);
+  color: var(--text);
+}
+
+.orders-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 4px 4px 4px;
+}
+.page-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  color: var(--muted-2);
+  cursor: pointer;
+}
+.page-btn:hover {
+  background: var(--panel-border);
+  color: var(--text);
+}
+.page-btn.active {
+  background: var(--panel-border);
+  color: #fff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .orders-card {
+    margin-top: 45px;
+  }
+  .orders-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .ot-left {
+    order: 2;
+    width: 100%;
+  }
+  .ot-search {
+    order: 1;
+    width: 100%;
+  }
+  .ot-search input {
+    width: 100%;
+  }
+  .orders-pagination {
+    justify-content: center;
+  }
+
+  /* Turn table into stacked cards */
+  .orders-table thead {
+    display: none;
+  }
+  .orders-table,
+  .orders-table tbody,
+  .orders-table tr,
+  .orders-table td {
+    display: block;
+    width: 100%;
+  }
+  .orders-table tr {
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: var(--panel);
+  }
+  .orders-table td {
+    padding: 8px 6px;
+  }
+  .orders-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .orders-table td:last-child {
+    text-align: right;
+  }
+}

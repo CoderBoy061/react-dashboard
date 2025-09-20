@@ -1,0 +1,68 @@
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --panel-border: #eef2f7;
+  --text: #111827;
+  --muted: #6b7280;
+  --muted-2: #9ca3af;
+  --chip-bg: #fff;
+  --toolbar-bg: #f8fafc;
+  --stat-accent-bg: #e6f4ff;
+  --stat-accent-hover: #d8eeff;
+}
+
+.dark {
+  --bg: #0f1115;
+  --panel: #141820;
+  --panel-border: #1f2430;
+  --text: #e5e7eb;
+  --muted: #cbd5e1;
+  --muted-2: #94a3b8;
+  --chip-bg: #1a202c;
+  --toolbar-bg: #0f131a;
+  --stat-accent-bg: #e6f4ff;
+  --stat-accent-hover: #d8eeff;
+}
+
+html,
+body,
+#root {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.total-card,
+.revenue-card,
+.proj-card,
+.orders-card,
+.panel,
+.table,
+.sidebar,
+.header {
+  background: var(--panel) !important;
+  border-color: var(--panel-border) !important;
+  color: var(--text) !important;
+}
+
+.orders-toolbar {
+  background: var(--toolbar-bg) !important;
+  border-color: var(--panel-border) !important;
+}
+.chip {
+  background: var(--chip-bg) !important;
+}
+.rc-title,
+.pc-title,
+.ts-title,
+.panel-head,
+.stat-title {
+  color: var(--text) !important;
+}
+.rc-legend,
+.legend-label,
+.stat-change,
+.rc-ylabel,
+.rc-xlabel {
+  color: var(--muted-2) !important;
+  fill: var(--muted-2) !important;
+}
